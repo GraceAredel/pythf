@@ -30,7 +30,7 @@ class Client:
         }
         if resp.status_code >= 500:
             raise ServerError(**kwargs)
-        elif resp.status_code == 401:
+        elif resp.status_code in [401, 403]:
             raise AuthenticationError(**kwargs)
         elif resp.status_code == 423:
             raise ServerIsBeingUpdatedError(**kwargs)
